@@ -12,6 +12,7 @@ install:
   - sudo pear channel-discover pear.drush.org && sudo pear install drush/drush
   # Must install Console_Table for drush, as workaround to initing as root.
   - sudo pear install Console_Table
+  - mkdir shared/files
 before_script:
   - mysql -e 'create database turnip'
   # Init the settings file
