@@ -11,7 +11,12 @@ install:
   - sudo apt-get install php-pear
   - sudo pear channel-discover pear.drush.org && sudo pear install drush/drush
   - sudo drush
+  - touch shared/settings.local.php
 before_script:
+  - mysql -e 'create database turnip'
+  # Init the settings file
+  # @todo make this a proper drush command instead of hacking.
+  - drush si -y --db-url=mysql://travis@127.0.0.1/turnip
   - bin/make-install-profile client_xyz xyz_foobar "Web app ABC" "Client XYZ's ABC app enables users to browse a database of records."
 
 script: bin/install
