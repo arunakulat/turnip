@@ -10,8 +10,8 @@ install:
   - sudo apt-get install php5-curl > /dev/null
   - sudo apt-get install php-pear
   - sudo pear channel-discover pear.drush.org && sudo pear install drush/drush
-  # Must init drush as root to download Console_Table.
-  - sudo su && drush && exit
+  # Must install Console_Table for drush, as workaround to initing as root.
+  - sudo pear install Console_Table
 before_script:
   - mysql -e 'create database turnip'
   # Init the settings file
