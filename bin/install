@@ -21,7 +21,7 @@ if [[ -e db/production_current.sql.gz ]]; then
   cd -
 else
   cd drupal
-  drush site-install -y --uri=default $PROFILE
+  drush site-install -y --debug --uri=default $PROFILE
   drush fra -y
   drush cc all
   cd -
